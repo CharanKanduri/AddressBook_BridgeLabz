@@ -18,6 +18,7 @@ namespace AddressBook
         public long phoneNumber;
         public string email;
         public int n = 1;
+        public int contact = 0;
 
         public AddContact[] addContactArray;
         int i = 0;
@@ -34,6 +35,7 @@ namespace AddressBook
             this.phoneNumber = phoneNumber;
             this.email = email;
 
+
         }
         //default constructor
         public AddContact()
@@ -44,9 +46,9 @@ namespace AddressBook
 
         public void CreateContact(string firstName, string lastName, string Address, string city, string state, int zip, long phoneNumber, string email)
         {
-            addContactArray[i] = new AddContact( firstName,  lastName,  Address,  city,  state,  zip,  phoneNumber,  email);
-            Console.WriteLine("First name: {0}\n Last name: {1}\n Address: {2}\n City: {3}\n Zip: {4}\n State: {5}\n Phone Number: {6}\n Email: {7} \n", addContactArray[i].firstName, addContactArray[i].lastName, addContactArray[i].Address, addContactArray[i].city, addContactArray[i].zip, addContactArray[i].state, addContactArray[i].phoneNumber, addContactArray[i].email);
+            addContactArray[this.contact] = new AddContact( firstName,  lastName,  Address,  city,  state,  zip,  phoneNumber,  email);
 
+            Console.WriteLine("First name: {0}\n Last name: {1}\n Address: {2}\n City: {3}\n Zip: {4}\n State: {5}\n Phone Number: {6}\n Email: {7} \n", addContactArray[i].firstName, addContactArray[i].lastName, addContactArray[i].Address, addContactArray[i].city, addContactArray[i].zip, addContactArray[i].state, addContactArray[i].phoneNumber, addContactArray[i].email);
 
         }
         
