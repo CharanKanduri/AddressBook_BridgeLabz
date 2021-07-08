@@ -126,19 +126,18 @@ namespace Address_Book
         static void Main(string[] args)
         {
             //Input an AddressBook name
-            Console.WriteLine("Enter number of AddressBook to create");
-            int num = Convert.ToInt32(Console.ReadLine());
+           // Console.WriteLine("Enter number of AddressBook to create");
+            //int num = Convert.ToInt32(Console.ReadLine());
             int i = 0;
 
             //Create dictionary to store addressbook
-            IDictionary<string, AddressBookSystem[]> numberNames = new Dictionary<string, AddressBookSystem[]>();
+            //IDictionary<string, AddressBookSystem[]> numberNames = new Dictionary<string, AddressBookSystem[]>();
 
             //Runs till number of addressbook needs to be added
-            while (i < num)
-            {
+           
                 //Get input
-                Console.WriteLine("Enter name of addressBook");
-                string addrBookName = Console.ReadLine();
+              //  Console.WriteLine("Enter name of addressBook");
+                //string addrBookName = Console.ReadLine();
 
                 //Create object for Class
                 AddressBookSystem addressBookSystem = new AddressBookSystem();
@@ -185,14 +184,14 @@ namespace Address_Book
                 }
 
                 //Implements IDictionary<TKey, TValue> interface.
-                numberNames.Add(addrBookName, addressBookSystem.ContactArray);
-                foreach (KeyValuePair<string, AddressBookSystem[]> kvp in numberNames)
-                {
+                //numberNames.Add(addrBookName, addressBookSystem.ContactArray);
+                //foreach (KeyValuePair<string, AddressBookSystem[]> kvp in numberNames)
+                //{
                                 
-                    Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
-                }
+                //    Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+               // }
                 i++;
-            }
+            
         }
         //Display Details
         public void Display(AddressBookSystem[] ContactArray, int N)
