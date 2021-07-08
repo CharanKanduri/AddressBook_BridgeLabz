@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Address_Book
 {
@@ -54,7 +55,7 @@ namespace Address_Book
             {
                 i++;
             }
-            Console.WriteLine("Enter field to be modified 1.firstName 2.lastName 3.Address 4.city 5.state 6.zip 7.phoneNumber 8.email");
+            Console.WriteLine("Enter field to be modified 1.firstName 2.lastName 3.Address 4.city 5.state 6.zip 7.phoneNumber 8.email 9.Delete a contact");
             int ch = Convert.ToInt32(Console.ReadLine());
             switch (ch)
             {
@@ -97,6 +98,10 @@ namespace Address_Book
                     Console.WriteLine("Ente the modified value");
                     string emails = Console.ReadLine();
                     ContactArray[i].email = emails;
+                    break;
+                case 9:
+                    ContactArray = ContactArray.Take(i).Concat(ContactArray.Skip(i + 1)).ToArray();
+                    contact--;
                     break;
             }
             ContactPerson obj = new ContactPerson();
