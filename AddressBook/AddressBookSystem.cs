@@ -15,7 +15,7 @@ namespace Address_Book
         public int zip;
         public long phoneNumber;
         public string email;
-        public AddressBookSystem[] ContactArray;
+        public List<AddressBookSystem> ContactArray;
         int contact = 0;
 
         //Parameterised Constructor
@@ -34,17 +34,38 @@ namespace Address_Book
         //Default Contructor
         public AddressBookSystem()
         {
-            this.ContactArray = new AddressBookSystem[10];
+            this.ContactArray = new List<AddressBookSystem>();
         }
 
         //To add Contact to Address Book
         public void CreateContact(string firstName, string lastName, string Address, string city, string state, int zip, long phoneNumber, string email)
         {
+            //Newly add element to List
+            if (contact == 0)
+            {
+                ContactArray.Add(new AddressBookSystem(firstName, lastName, Address, city, state, zip, phoneNumber, email));
+                contact++;
+                ContactPerson obj = new ContactPerson();
+                obj.Display(ContactArray, contact);
 
-            ContactArray[this.contact] = new AddressBookSystem(firstName, lastName, Address, city, state, zip, phoneNumber, email);
-            contact++;
-            ContactPerson obj = new ContactPerson();
-            obj.Display(ContactArray, contact);
+            }
+            else if (contact != 0)
+            {
+                //Check if element already present in List
+                AddressBookSystem addressBookSystems = ContactArray.Find(x => x.firstName.Equals(firstName));
+                if (addressBookSystems == null)
+                {
+                    ContactArray.Add(new AddressBookSystem(firstName, lastName, Address, city, state, zip, phoneNumber, email));
+                    contact++;
+                    ContactPerson obj = new ContactPerson();
+                    obj.Display(ContactArray, contact);
+                }
+                else
+                {
+                    Console.WriteLine("This person already exists in your AddressBook!");
+                }
+
+            }
         }
         //Function call To modify
         public void Modify()
@@ -106,7 +127,7 @@ namespace Address_Book
                     break;
                 //Delete a user
                 case 9:
-                    ContactArray = ContactArray.Take(i).Concat(ContactArray.Skip(i + 1)).ToArray();
+                    ContactArray = ContactArray.Take(i).Concat(ContactArray.Skip(i + 1)).ToList();
                     contact--;
                     break;
                 default:
@@ -116,93 +137,6 @@ namespace Address_Book
             //Display Function
             ContactPerson obj = new ContactPerson();
             obj.Display(ContactArray, contact);
-
-        }
-    }
-
-
-    class ContactPerson
-    {
-        static void Main(string[] args)
-        {
-            //Input an AddressBook name
-           // Console.WriteLine("Enter number of AddressBook to create");
-            //int num = Convert.ToInt32(Console.ReadLine());
-            int i = 0;
-
-            //Create dictionary to store addressbook
-            //IDictionary<string, AddressBookSystem[]> numberNames = new Dictionary<string, AddressBookSystem[]>();
-
-            //Runs till number of addressbook needs to be added
-           
-                //Get input
-              //  Console.WriteLine("Enter name of addressBook");
-                //string addrBookName = Console.ReadLine();
-
-                //Create object for Class
-                AddressBookSystem addressBookSystem = new AddressBookSystem();
-                Console.WriteLine("Enter number of Contacts to Add");
-                int contacts = Convert.ToInt32(Console.ReadLine());
-
-                //Input contacts values from user
-                while (contacts > 0)
-                {
-                    Console.WriteLine("Enter Firstname ");
-                    string firstname = Console.ReadLine();
-                    Console.WriteLine("Enter Lastname ");
-                    string lastname = Console.ReadLine();
-
-                    Console.WriteLine("Enter Address");
-                    string address = Console.ReadLine();
-
-                    Console.WriteLine("Enter City");
-                    string city = Console.ReadLine();
-
-                    Console.WriteLine("Enter State");
-                    string state = Console.ReadLine();
-
-                    Console.WriteLine("Enter pincode");
-                    int pincode = Convert.ToInt32(Console.ReadLine());
-
-                    Console.WriteLine("Enter PhoneNumber ");
-                    long phone = Convert.ToInt64(Console.ReadLine());
-
-                    Console.WriteLine("Enter Email");
-                    string email = Console.ReadLine();
-
-                    //Call Method
-                    addressBookSystem.CreateContact(firstname, lastname, address, city, state, pincode, phone, email);
-                    contacts--;
-                }
-
-                //Check if any modification needed
-                Console.WriteLine("Do you want to Modify?(Y/N)");
-                char ch = Convert.ToChar(Console.ReadLine());
-                if (ch == 'Y')
-                {
-                    addressBookSystem.Modify();
-                }
-
-                //Implements IDictionary<TKey, TValue> interface.
-                //numberNames.Add(addrBookName, addressBookSystem.ContactArray);
-                //foreach (KeyValuePair<string, AddressBookSystem[]> kvp in numberNames)
-                //{
-                                
-                //    Console.WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
-               // }
-                i++;
-            
-        }
-        //Display Details
-        public void Display(AddressBookSystem[] ContactArray, int N)
-        {
-            Console.WriteLine("---------Address Book Contains---------");
-            int i;
-            for (i = 0; i < N; i++)
-            {
-                Console.WriteLine("First name: {0}\n Last name: {1}\n Address: {2}\n City: {3}\n Zip: {4}\n State: {5}\n Phone Number: {6}\n Email: {7} \n", ContactArray[i].firstName, ContactArray[i].lastName, ContactArray[i].Address, ContactArray[i].city, ContactArray[i].zip, ContactArray[i].state, ContactArray[i].phoneNumber, ContactArray[i].email);
-
-            }
         }
     }
 }
