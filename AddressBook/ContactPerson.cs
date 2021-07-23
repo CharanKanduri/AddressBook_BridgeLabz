@@ -7,7 +7,7 @@ namespace Address_Book
 {
     class ContactPerson
     {
-
+        //
         public static IDictionary<string, List<AddressBookSystem>> numberNames = new Dictionary<string, List<AddressBookSystem>>();
         public static Dictionary<string, List<AddressBookSystem>> City = new Dictionary<string, List<AddressBookSystem>>();
         public static Dictionary<string, List<AddressBookSystem>> State = new Dictionary<string, List<AddressBookSystem>>();
@@ -95,12 +95,12 @@ namespace Address_Book
             }
         }
 
-        //
+        //Search a person through city or state or View all city and state List
         public static void Search()
         {
             Console.WriteLine("Enter 1-to Seach a person through a City");
             Console.WriteLine("Enter 2-to Seach a person through a State");
-            Console.WriteLine("Enter 3-to view a person through City or State");
+            Console.WriteLine("Enter 3-to view people  in City list or State list");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -119,6 +119,7 @@ namespace Address_Book
                     break;
             }
         }
+        //Display City list or State list from Dictionary
         public static void DisplayCityorState()
         {
             Console.WriteLine("Enter 1-to view City list\n Enter 2-to view State list");
@@ -132,7 +133,8 @@ namespace Address_Book
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in City {2}", j.firstName, j.lastName, j.city);
                     }
-
+                    //Count number of people in Particular city
+                    Console.WriteLine("Count of people in City is: {0}", i.Value.Count);
 
                 }
             }
@@ -145,7 +147,8 @@ namespace Address_Book
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in State {2}", j.firstName, j.lastName, j.state);
                     }
-
+                    //Count number of people in Particular State
+                    Console.WriteLine("Count of people in State is: {0}", i.Value.Count);
                 }
             }
 
