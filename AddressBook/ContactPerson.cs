@@ -147,7 +147,7 @@ namespace Address_Book
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in State {2}", j.firstName, j.lastName, j.state);
                     }
-                    //Count number of people in Particular State
+                    //Count 
                     Console.WriteLine("Count of people in State is: {0}", i.Value.Count);
                 }
             }
