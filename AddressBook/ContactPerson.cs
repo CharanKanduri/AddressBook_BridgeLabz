@@ -95,6 +95,58 @@ namespace Address_Book
             }
         }
 
+        public static void SortContactPerson()
+        {
+
+            Console.WriteLine("Enter 1-to Sort contact based on First Name");
+            Console.WriteLine("Enter 2-to Sort Contact Based on State");
+            Console.WriteLine("Enter 3-to Sort Contact based on City");
+            Console.WriteLine("Enter 4-to Sort Contact based on zip");
+            int option = Convert.ToInt32(Console.ReadLine());
+            foreach (KeyValuePair<string, List<AddressBookSystem>> kvp in numberNames)
+            {
+                Console.WriteLine("********Displaying sorted Contact Person Details in address book: {0}********", kvp.Key);
+                //Store value of Dictionary in a list
+                List<AddressBookSystem> listAddressBook = kvp.Value;
+                //Create object for Class that implements IComparer<AddressBookSystem>  
+                ContactPersonComparer contactPersonComparer = new ContactPersonComparer();
+                switch (option)
+                {
+                    case 1:
+                        //Set field based on the switch case Option
+                        contactPersonComparer.compareByFields = ContactPersonComparer.sortBy.firstName;
+                        //Call Sort Method
+                        listAddressBook.Sort(contactPersonComparer);
+                        break;
+                    case 2:
+                        contactPersonComparer.compareByFields = ContactPersonComparer.sortBy.state;
+                        listAddressBook.Sort(contactPersonComparer);
+                        break;
+                    case 3:
+                        contactPersonComparer.compareByFields = ContactPersonComparer.sortBy.city;
+                        listAddressBook.Sort(contactPersonComparer);
+                        break;
+                    case 4:
+                        contactPersonComparer.compareByFields = ContactPersonComparer.sortBy.zip;
+                        listAddressBook.Sort(contactPersonComparer);
+                        break;
+                }
+
+                foreach (var emp in listAddressBook)
+                {
+                    Console.WriteLine(emp.ToString());
+                }
+
+            }
+
+        }
+
+
+
+
+
+
+
         //Search a person through city or state or View all city and state List
         public static void Search()
         {
