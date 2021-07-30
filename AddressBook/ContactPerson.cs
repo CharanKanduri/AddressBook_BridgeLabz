@@ -149,6 +149,7 @@ namespace Address_Book
             Console.WriteLine("Enter 4-to Sort Contact people in Address Book");
             Console.WriteLine("Enter 5-To Write AddressBook in File");
             Console.WriteLine("Enter 6-To Read a File");
+            Console.WriteLine("Enter 7-Perform Csv Operations");
 
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -170,6 +171,9 @@ namespace Address_Book
                     break;
                 case 6:
                     FileIOOperations.ReadAddressBook();
+                    break;
+                case 7:
+                    CSVFileIO.CSVOperation(numberNames);
                     break;
 
                 default:

@@ -12,14 +12,14 @@ namespace Address_Book
         public List<AddressBookSystem> cityList;
 
         //instance variables 
-        public string firstName;
-        public string lastName;
-        public string Address;
-        public string city;
-        public string state;
-        public string zip;
-        public string phoneNumber;
-        public string email;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string Address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zip { get; set; }
+        public string phoneNumber { get; set; }
+        public string email { get; set; }
         public List<AddressBookSystem> ContactArray;
         public int contact = 0;
 
@@ -41,6 +41,7 @@ namespace Address_Book
         {
             this.ContactArray = new List<AddressBookSystem>();
         }
+
         public override string ToString()
         {
             return ("Name: " + this.firstName + " " + this.lastName + "\tAddress: " + this.Address + "\tCity: " + this.city + " \t State: " + this.state + "\tPincode: " + this.zip + " \t Phone Number: " + this.phoneNumber + "\tEmail Id: " + this.email);
