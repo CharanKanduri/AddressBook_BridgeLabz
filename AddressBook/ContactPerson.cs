@@ -150,6 +150,7 @@ namespace Address_Book
             Console.WriteLine("Enter 5-To Write AddressBook in File");
             Console.WriteLine("Enter 6-To Read a File");
             Console.WriteLine("Enter 7-Perform Csv Operations");
+            Console.WriteLine("Enter 8-Read and Write Operation in Json File");
 
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -175,7 +176,9 @@ namespace Address_Book
                 case 7:
                     CSVFileIO.CSVOperation(numberNames);
                     break;
-
+                case 8:
+                    JsonIOOperations.JsonIO(numberNames);
+                    break;
                 default:
                     Console.WriteLine("Invalid Option!");
                     break;
