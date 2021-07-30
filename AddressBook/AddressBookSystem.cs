@@ -17,14 +17,14 @@ namespace Address_Book
         public string Address;
         public string city;
         public string state;
-        public int zip;
-        public long phoneNumber;
+        public string zip;
+        public string phoneNumber;
         public string email;
         public List<AddressBookSystem> ContactArray;
-        int contact = 0;
+        public int contact = 0;
 
         //Parameterised Constructor
-        public AddressBookSystem(string firstName, string lastName, string Address, string city, string state, int zip, long phoneNumber, string email)
+        public AddressBookSystem(string firstName, string lastName, string Address, string city, string state, string zip, string phoneNumber, string email)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -41,9 +41,12 @@ namespace Address_Book
         {
             this.ContactArray = new List<AddressBookSystem>();
         }
-
+        public override string ToString()
+        {
+            return ("Name: " + this.firstName + " " + this.lastName + "\tAddress: " + this.Address + "\tCity: " + this.city + " \t State: " + this.state + "\tPincode: " + this.zip + " \t Phone Number: " + this.phoneNumber + "\tEmail Id: " + this.email);
+        }
         //To add Contact to Address Book
-        public void CreateContact(string firstName, string lastName, string Address, string city, string state, int zip, long phoneNumber, string email)
+        public void CreateContact(string firstName, string lastName, string Address, string city, string state, string zip, string phoneNumber, string email)
         {
             AddressBookSystem bookSystem;
 
@@ -173,12 +176,12 @@ namespace Address_Book
                     break;
                 case 6:
                     Console.WriteLine("Enter the modified value");
-                    int temp = Convert.ToInt32(Console.ReadLine());
+                    string temp = (Console.ReadLine());
                     ContactArray[i].zip = temp;
                     break;
                 case 7:
                     Console.WriteLine("Ente the modified value");
-                    int phn = Convert.ToInt32(Console.ReadLine());
+                    string phn = Console.ReadLine();
                     ContactArray[i].phoneNumber = phn;
                     break;
                 case 8:

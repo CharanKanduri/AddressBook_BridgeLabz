@@ -1,0 +1,6 @@
+Address Book: A1
+Name: Charan Kanduri	Address: SaraswathiNagar	City: Nellore 	 State: AP	Pincode: 524002 	 Phone Number: 9398100236	Email Id: charan@gmail.com
+
+Address Book: A2
+Name: Srikar Kanduri	Address: 4th Avenue	City: Boston 	 State: Massachusatts	Pincode: 676767 	 Phone Number: 8189994011	Email Id: srikar@gmail.com
+
